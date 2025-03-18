@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        <h1>Smart Attendance Management System</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Automated Attendance Tracking for Schools & Colleges</h2>
+            <p>Manage student and teacher attendance efficiently with our interactive platform.</p>
+            <button class="get-started">Get Started</button>
+        </div>
+        <div class="hero-image">
+            <img src="attendance-banner.png" alt="Attendance System">
+        </div>
+    </section>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="login-box">
+            <h2>🔑 Login</h2>
+            <label for="role">Select Role:</label>
+            <select id="role">
+                <option value="admin">Admin</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select>
+            <input type="text" id="username" placeholder="Enter Username">
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard" class="dashboard hidden">
+        <h2>👑 Admin Dashboard</h2>
+        <button onclick="showAddTeacher()">➕ Add Teacher</button>
+        <button onclick="viewAttendance()">📊 View Attendance</button>
+        <button onclick="postResults()">📢 Post Results</button>
+        <button onclick="sendNotice()">📩 Send Notice</button>
+    </section>
+
+    <!-- Teacher Dashboard -->
+    <section id="teacher-dashboard" class="dashboard hidden">
+        <h2>📖 Teacher Dashboard</h2>
+        <button onclick="viewClasses()">📌 View Classes</button>
+        <button onclick="markAttendance()">✅ Mark Attendance</button>
+        <button onclick="sendResults()">📜 Send Results</button>
+        <button onclick="uploadMaterials()">📂 Upload Notes</button>
+    </section>
+
+    <!-- Student Dashboard -->
+    <section id="student-dashboard" class="dashboard hidden">
+        <h2>🎓 Student Dashboard</h2>
+        <button onclick="viewTimetable()">🕒 View Timetable</button>
+        <button onclick="checkAttendance()">📋 Check Attendance</button>
+        <button onclick="viewResults()">🎯 View Results</button>
+        <button onclick="downloadMaterials()">📥 Download Notes</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 ELITE COACHING CENTER. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Code injected by live-server -->
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function() {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function(msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        } else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+</body>
+
+</html>
